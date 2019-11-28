@@ -1,0 +1,278 @@
+Aluno: Fabricio Henrique | Matricula: 1924070026
+
+1. Letra D
+************************************************
+2. A = FALSO
+   B = VERDADEIRO
+   C = FALSO
+   D = VERDADEIRO
+   E = VERDADEIRO
+   F = VERDADEIRO
+   G = FALSO
+   H = VERDADEIRO
+   I = FALSO
+   J = FALSO
+   K = VERDADEIRO
+   I = VERDADEIRO
+************************************************
+3.  class Carro
+    {
+        private string placa;
+
+        private int ano;
+
+        private string modelo;
+
+        public string Placa
+        {
+            get => placa;
+            set => placa = value;
+        }
+        public int Ano
+        {
+            get => ano;
+            set => ano = value;
+        }
+        public string Modelo
+        {
+            get => modelo;
+            set => modelo = value;
+        }
+    }
+************************************************
+    4.  class TesteCarro
+    {
+        static void Main(string[] args)
+        {
+            Carro carro1 = new Carro();
+            carro1.Placa = "DEF-456";
+            carro1.Ano = 2019;
+            carro1.Modelo = "HB20";
+
+            Console.WriteLine("A placa do carro e {0} , ano {1} , modelo {2}.", carro1.Placa, carro1.Ano, carro1.Modelo);
+            Console.ReadLine();
+
+        }
+    }
+************************************************
+5.   class TesteTriangulo
+    {
+        static void Main(string[] args)
+        {
+            Triangulo triangulo1 = new Triangulo();
+            triangulo1.Lado = 3;
+
+            Console.WriteLine("a area do triangulo e " + triangulo1.CalcularArea());
+            Console.WriteLine("*************************************************************");
+            Console.WriteLine("o perimetro do triangulo e " + triangulo1.CalcularPerimetro());
+            Console.ReadLine();
+
+        }
+    }
+
+    class Triangulo
+    {
+        private double lado;
+
+        public double Lado
+        {
+            get => lado;
+            set => lado = value;
+        }
+
+        public Double CalcularArea()
+        {
+            double area = ((Math.Pow(lado, 2) * Math.Sqrt(3)) / 4);
+            return area;
+
+        }
+        public Double CalcularPerimetro()
+        {
+            double perimetro = lado * 3;
+            return perimetro;
+        }
+    }
+************************************************
+9.   class TesteCharacter
+{
+    static void Main(string[] args)
+    {
+        // Instaciando os indices do vetor
+        Character[] chatacterS = new Character[4];
+        for (int i = 0; i < chatacterS.Length; i++)
+        {
+            chatacterS[i] = new Character();
+        }
+        // Preenchendo os indices
+        chatacterS[0].Personagem("Fabricio", +20, +40);
+        chatacterS[1].Personagem("Alexandre", +20, +40);
+        chatacterS[2].Personagem("Pedro", -80, +99999);
+        chatacterS[3].Personagem("Joao", -20, -35);
+
+        LerFicha(chatacterS);
+        Console.ReadLine();
+    }
+    static void LerFicha(Character[] ficha)
+    {
+        for(int i = 0; i < ficha.Length; i++)
+        {
+            ficha[i].LerPersonagem();
+        }
+    }
+}
+
+class Character
+{
+    private string nome;
+    private int forca;
+    private int agilidade;
+
+    public void Personagem(string _nome, int _forca, int _agilidade)
+    {
+        nome = _nome;
+        forca = _forca;
+        agilidade = _agilidade;
+    }
+
+    public void LerPersonagem()
+    {
+        Console.WriteLine("O nome do personagem e {0} , possui forca {1} e agilidade {2}", nome, forca, agilidade);
+    }
+}
+************************************************
+10.
+************************************************
+11.class Program
+    {
+        static void Main(string[] args)
+        {
+            // Instaciando o Vetor
+            ItemMenu[] compras = new ItemMenu[5];
+            #region Bebidas
+            //Instaciando os indices do vetor
+            compras[0] = new Bebida();
+            compras[1] = new Bebida();
+            compras[2] = new Bebida();
+
+            //Atribuido valores
+            compras[0].Nome = "Coca-Cola";
+            compras[0].Preco = 3.5f;
+
+            compras[1].Nome = "Fanta Laranja";
+            compras[1].Preco = 5.0f;
+
+            compras[2].Nome = "Guarana";
+            compras[2].Preco = 8.0f;
+            #endregion
+
+            #region Aperitivos
+            //Instaciando os indices do vetor
+            compras[3] = new Aperitivo();
+            compras[4] = new Aperitivo();
+
+            //Atribuido valores
+            compras[3].Nome = "Batata Frita";
+            compras[3].Preco = 3.0f;
+
+            compras[4].Nome = "Espedinho";
+            compras[4].Preco = 4.0f;
+            #endregion
+
+            LerCardapio(compras);
+            Console.ReadLine();
+        }
+        static void LerCardapio(ItemMenu[] cardapio)
+        {
+            for(int i = 0; i < cardapio.Length; i++)
+            {
+                if(cardapio[i].GetType() == typeof(Bebida))
+                {
+                    Console.WriteLine("{0} | Tamanho: {1} | R$ {2}", cardapio[i].ImprimirNome(), cardapio[i].Tamanho(), cardapio[i].ImprimirPreco());
+                }
+
+                if(cardapio[i].GetType() == typeof(Aperitivo))
+                {
+                    Console.WriteLine("{0} | R$ {1}", cardapio[i].ImprimirNome(), cardapio[i].ImprimirPreco());
+                }
+            }
+        }
+    }
+
+    class ItemMenu
+   {
+       private string nome;
+       private float preco;
+
+       public float Preco { get => preco; set => preco = value; }
+
+       public string Nome { get => nome; set => nome = value; }
+
+       public virtual string ImprimirNome()
+       {
+           return nome;
+       }
+
+       public virtual float ImprimirPreco()
+       {
+           return preco;
+       }
+
+       public virtual string Tamanho()
+       {
+           return null;
+       }
+   }
+
+   class Bebida : ItemMenu
+    {
+        private string tamanho;
+
+        public override float ImprimirPreco()
+        {
+            return this.Preco;
+        }
+        public override string ImprimirNome()
+        {
+            return this.Nome;
+        }
+
+        public override string Tamanho()
+        {
+            if (Preco <= 3.5f)
+            {
+                tamanho = "pequeno";
+            }
+            else if(Preco < 6)
+            {
+                tamanho = "medio";
+            }
+            else if (Preco >= 7)
+            {
+                tamanho = "grande";
+            }
+            else
+            {
+                tamanho = null;
+            }
+
+            return this.tamanho;
+        }
+
+    }
+
+    class Aperitivo : ItemMenu
+    {
+
+
+        public override string ImprimirNome()
+        {
+            return this.Nome;
+        }
+    }
+************************************************
+6. Letra E
+************************************************
+7. Letra B
+************************************************
+8. Letra C
+************************************************
